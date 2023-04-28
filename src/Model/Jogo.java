@@ -27,6 +27,7 @@ public abstract class Jogo extends JPanel implements Runnable {
 	public Jogo(String img) {
 		super();
 		setPreferredSize(new Dimension(LARGURA,ALTURA));
+		
 		setFocusable(true);
 		requestFocus();
 		Load(img);

@@ -9,6 +9,7 @@ import java.io.IOException;
 import Model.Inimigo;
 import Model.Picterodatilo;
 import Model.Sprite;
+import Model.Triceraptor;
 import View.Fase;
 import View.Janela;
 import View.Menu;
@@ -85,7 +86,13 @@ public class Controle implements KeyListener, ActionListener, Runnable {
 				inimigo.getPicterodatilos().add(pic2);
                 add++;
 			}
-			
+			else if(personagem.getX()> 150 && add==1) {
+				Triceraptor tri= new Triceraptor("tri.png",9,2,9,800,408);
+				inimigo.getTriceraptores().add(tri);
+				add++;
+			tri.setControle(1);
+				
+			}
 		} catch (IOException e) {
 
 		}
@@ -115,7 +122,7 @@ public class Controle implements KeyListener, ActionListener, Runnable {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==menu.getJogar()) {
 			menu.getJogar().setVisible(false);
-			janela.setSize(1200,618);
+			janela.setSize(1024,544);
 			fase.setVisible(true);
 			fase.requestFocus();
 		}

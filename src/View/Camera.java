@@ -7,6 +7,7 @@ import Model.Inimigo;
 import Model.Mapa;
 import Model.Picterodatilo;
 import Model.Sprite;
+import Model.Triceraptor;
 
 public class Camera {
 	private Sprite personagem;
@@ -41,7 +42,15 @@ public class Camera {
 			g.drawImage(pic.sprites[pic.aparencia], pic.getX(), pic.getY(), null);
 
 		}
+		
+		for (int i = 0; i < inimigo.getTriceraptores().size(); i++) {
 
+			Triceraptor tri = (Triceraptor) inimigo.getTriceraptores().get(i);
+
+			g.drawImage(tri.sprites[tri.aparencia], tri.getX(), tri.getY(), null);
+
+		}
+		
 		g.drawImage(personagem.sprites[personagem.aparencia], personagem.getX(), personagem.getY(), null);
 
 	}

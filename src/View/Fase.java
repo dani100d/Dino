@@ -25,12 +25,12 @@ public class Fase extends Jogo {
 
 	@Override
 	public void Load(String img) {
-		fundo = new Mapa("fase1.png", "fundo.txt");
+		fundo = new Mapa("fundojogo.jpg", "fundo.txt");
 		fundo.montarMapa();
 
 		inimigo = new Inimigo();
 		try {
-			personagem = new Sprite(img, 0, 4, 12, 50, 440);
+			personagem = new Sprite(img, 0, 4, 12, 50, 408);
 		} catch (IOException e) {
 
 		}

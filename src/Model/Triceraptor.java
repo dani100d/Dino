@@ -79,7 +79,7 @@ public class Triceraptor extends Thread {
 		while (ativo) {
 			try {
 
-				sleep(50);
+				sleep(2000);
 				if(controle==0) {
 					animar();
 				}else if(controle==1) {
@@ -94,78 +94,88 @@ public class Triceraptor extends Thread {
 	}
 
 	public void atacar() {
-		
+
 		for(int i=0;i<100;i++) {
 			try {
-				sleep(25);
-			
-			this.setX(this.getX() - pulo);
-			switch (left) {
-			case 0:
-				this.aparencia = 0;
-				break;
-			case 1:
-				this.aparencia = 1;
-				break;
-			case 2:
-				this.aparencia = 2;
-				break;
-			case 3:
-				this.aparencia = 3;
-				break;
-			case 4:
-				this.aparencia = 4;
-				break;
-			case 5:
-				this.aparencia = 5;
-				break;
-			case 6:
-				this.aparencia = 6;
-				break;
-			case 7:
-				this.aparencia = 7;
-				break;
-			case 8:
-				this.aparencia = 8;
-				break;
-			}
-			if (left == 8)
-				left = 0;
-			else
-				left++;
+				sleep(50);
+
+				this.setX(this.getX() - pulo);
+				switch (left) {
+				case 0:
+					this.aparencia = 0;
+					break;
+				case 1:
+					this.aparencia = 1;
+					break;
+				case 2:
+					this.aparencia = 2;
+					break;
+				case 3:
+					this.aparencia = 3;
+					break;
+				case 4:
+					this.aparencia = 4;
+					break;
+				case 5:
+					this.aparencia = 5;
+					break;
+				case 6:
+					this.aparencia = 6;
+					break;
+				case 7:
+					this.aparencia = 7;
+					break;
+				case 8:
+					this.aparencia = 8;
+					break;
+				}
+				if (left == 8)
+					left = 0;
+				else
+					left++;
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-			this.setControle(0);
-		
+		this.setControle(0);
+
 	}
 	public void animar() {
 
-		switch (left) {
-		case 0:
-			this.aparencia = 9;
-			break;
-		case 1:
-			this.aparencia = 10;
-			break;
-		case 2:
-			this.aparencia = 11;
-			break;
-		case 3:
-			this.aparencia = 12;
-			break;
-		case 4:
-			this.aparencia = 13;
-			break;
+		for(int i=0;i<5;i++) {
 
+			try {
+				sleep(200);
+
+				switch (left) {
+				case 0:
+					this.aparencia = 9;
+					break;
+				case 1:
+					this.aparencia = 10;
+					break;
+				case 2:
+					this.aparencia = 11;
+					break;
+				case 3:
+					this.aparencia = 12;
+					break;
+				case 4:
+					this.aparencia = 13;
+					break;
+
+				}
+				if (left == 4)
+					left = 0;
+				else
+					left++;
+			}
+			catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		if (left == 4)
-			left = 0;
-		else
-			left++;
-
 	}
 
 	public int getX() {

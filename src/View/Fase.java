@@ -30,7 +30,7 @@ public class Fase extends Jogo {
 
 		inimigo = new Inimigo();
 		try {
-			personagem = new Sprite(img, 0, 4, 12, 50, 408);
+			personagem = new Sprite(img, 0, 4, 12, 50, 413);
 		} catch (IOException e) {
 
 		}

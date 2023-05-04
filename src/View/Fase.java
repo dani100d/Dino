@@ -25,27 +25,19 @@ public class Fase extends Jogo {
 
 	@Override
 	public void Load(String img) {
-		fundo = new Mapa("fase1.png", "fundo.txt");
+		fundo = new Mapa("fundojogo.jpg", "fundo.txt");
 		fundo.montarMapa();
 
 		inimigo = new Inimigo();
 		try {
-			personagem = new Sprite(img, 0, 4, 12, 50, 440);
+			personagem = new Sprite(img, 0, 4, 12, 50, 408);
 		} catch (IOException e) {
 
 		}
 
-		try {
-			Picterodatilo pic1 = new Picterodatilo("picRoxo.png", 8, 9, 1, 500, 400);
-			Picterodatilo pic2 = new Picterodatilo("picRed.png", 8, 9, 1, 1000, 100);
-			inimigo.getPicterodatilos().add(pic1);
-			inimigo.getPicterodatilos().add(pic2);
-
-		} catch (IOException e) {
-
-		}
+		
 		camera = new Camera(personagem, fundo,inimigo);
-		setVisible(true);
+		setVisible(false);
 
 	}
 

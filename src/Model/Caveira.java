@@ -1,5 +1,4 @@
 package Model;
-
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -7,10 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
-import View.Fase;
-
-public class Sprite extends Thread {
-
+public class Caveira extends Thread {
 	private int x, y;
 	private int altura, largura;
 	private int rows, columns;
@@ -18,17 +14,20 @@ public class Sprite extends Thread {
 	public BufferedImage[] sprites;
 	private BufferedImage spriteSheet;
 	private Boolean pulando, abaixando;
-	private Point ponto = new Point(128, 320);
+	private Boolean ativo;
+	private int pulo, left;
+	private Point ponto = new Point(655,515);
 
-	public Sprite(String url, int aparencia, int columns, int rows, int posX, int posY) throws IOException {
+	public Caveira(String url, int aparencia, int columns, int rows, int posX, int posY) throws IOException {
 		spriteSheet = ImageIO.read(getClass().getClassLoader().getResource(url));
 		this.aparencia = aparencia;
 		this.pulando = false;
 		this.abaixando = false;
-
+		this.ativo = true;
+		this.pulo = 4;
+		this.left = 0;
 		this.largura = spriteSheet.getWidth() / columns;
 		this.altura = spriteSheet.getHeight() / rows;
-
 		this.setRows(columns);
 		this.setColumns(rows);
 		this.x = posX;
@@ -40,29 +39,77 @@ public class Sprite extends Thread {
 				sprites[(i * rows) + j] = spriteSheet.getSubimage(i * largura, j * altura, largura, altura);
 			}
 		}
+		start();
 	}
 
 	public boolean colisao(ArrayList<Rectangle> tmp, int x, int y) {
 		Rectangle personagem = new Rectangle(getX() + x, getY() + y, getLargura(), getAltura());
 		for (Rectangle rectangle : tmp) {
 			if (rectangle.intersects(personagem)) {
-				System.out.println("foi");
 				return true;
 			}
 		}
 		return false;
-
 	}
 
 	public void setX(int posX) {
-		 if (!colisao(Fase.getRetangulosColisao(), posX - this.x, 0)) {
+		// if (!colisao(Fase.getRetangulosColisao(), posX - this.x, 0)) {
 		this.x = posX;
-		 }
+		// }
 	}
 
 	public void setY(int posY) {
-		 if (!colisao(Fase.getRetangulosColisao(), 0, posY - this.y)) {
+		// if (!colisao(Fase.getRetangulosColisao(), 0, posY - this.y)) {
 		this.y = posY;
+		// }
+	}
+
+	@Override
+	public void run() {
+		while (ativo) {
+			try {
+				animar();
+				sleep(20);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void animar() {
+		for(int i=0;i<6;i++) {
+			try {
+				sleep(10);
+				//this.setX(this.getX() - pulo);
+				switch (left) {
+				case 0:
+					this.aparencia = 0;
+					break;
+				case 1:
+					this.aparencia = 3;
+					break;
+				case 2:
+					this.aparencia = 1;
+					break;
+				case 3:
+					this.aparencia = 4;
+					break;
+				case 4:
+					this.aparencia = 2;
+					break;
+				case 5:
+					this.aparencia = 5;
+					break;
+				
+				}
+				if (left == 5)
+					left = 0;
+				else
+					left++;
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

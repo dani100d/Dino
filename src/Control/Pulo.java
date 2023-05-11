@@ -17,8 +17,8 @@ public class Pulo extends Thread implements KeyListener {
 		keyPool = new HashMap<Integer, Boolean>();
 		right = 0;
 		pulo = 10;
-		subida = 16;
-		descida = 20;
+		subida = 32;
+		descida = 40;
 		start();
 
 	}

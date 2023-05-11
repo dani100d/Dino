@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 
 import javax.imageio.ImageIO;
 
-public class Mapa {
+public class Colisao {
 	private final int numeroColunas =96;
 	private final int numeroLinhas = 17;
 	private final int colunasTileSet = 32;
@@ -30,7 +30,7 @@ public class Mapa {
 
 	private Graphics2D dbg = mapa.createGraphics();
 	
-	public Mapa(String nomeTileSet,String nomeMapaMatriz) {
+	public Colisao(String nomeTileSet,String nomeMapaMatriz) {
 		
 		try {
 			tileSet=ImageIO.read(getClass().getClassLoader().getResourceAsStream(nomeTileSet));

@@ -1,6 +1,8 @@
 package View;
 
+import java.awt.Rectangle;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import Model.Inimigo;
 import Model.Jogo;
@@ -12,10 +14,11 @@ public class Fase extends Jogo {
 
 	private static final long serialVersionUID = 1L;
 
-	private Mapa fundo;
+	private Mapa fundo, colisao;
 	private Sprite personagem;
 	private Camera camera;
 	private Inimigo inimigo;
+	private static ArrayList<Rectangle> retangulosColisao;
 
 	public Fase(String img) {
 		super(img);
@@ -26,6 +29,8 @@ public class Fase extends Jogo {
 	@Override
 	public void Load(String img) {
 		fundo = new Mapa("fundojogo.jpg", "fundo.txt");
+		colisao = new Mapa("fundojogo.jpg", "colisao.txt");
+		retangulosColisao= colisao.montarColi();
 		fundo.montarMapa();
 
 		inimigo = new Inimigo();
@@ -66,6 +71,14 @@ public class Fase extends Jogo {
 
 	public Inimigo getInimigo() {
 		return inimigo;
+	}
+
+	public static ArrayList<Rectangle> getRetangulosColisao() {
+		return retangulosColisao;
+	}
+
+	public static void setRetangulosColisao(ArrayList<Rectangle> retangulosColisao) {
+		Fase.retangulosColisao = retangulosColisao;
 	}
 
 }

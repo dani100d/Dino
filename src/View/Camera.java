@@ -3,6 +3,7 @@ package View;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import Model.Caveira;
 import Model.Inimigo;
 import Model.Mapa;
 import Model.Picterodatilo;
@@ -48,6 +49,14 @@ public class Camera {
 			Triceraptor tri = (Triceraptor) inimigo.getTriceraptores().get(i);
 
 			g.drawImage(tri.sprites[tri.aparencia], tri.getX(), tri.getY(), null);
+
+		}
+		
+		for (int i = 0; i < inimigo.getCaveiras().size(); i++) {
+
+			Caveira caveira = (Caveira) inimigo.getCaveiras().get(i);
+
+			g.drawImage(caveira.sprites[caveira.aparencia], caveira.getX(), caveira.getY(), null);
 
 		}
 		

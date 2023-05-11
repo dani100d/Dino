@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.HashMap;
 import Model.Sprite;
+import View.Fase;
 
 public class Movimento extends Thread implements KeyListener {
 
@@ -29,9 +30,9 @@ public class Movimento extends Thread implements KeyListener {
 	}
 
 	public void keyPressed(KeyEvent e) {
-		
+
 		keyPool.put(e.getKeyCode(), true);
-		
+
 	}
 	public void keyReleased(KeyEvent e) {
 
@@ -40,7 +41,7 @@ public class Movimento extends Thread implements KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			personagem.aparencia = 0;
 		}
-		
+
 	}
 
 	public void keyTyped(KeyEvent e) {
@@ -63,45 +64,45 @@ public class Movimento extends Thread implements KeyListener {
 
 	public void mover() {
 
-		
 		if (keyPool.get(KeyEvent.VK_RIGHT) != null) {
+			if (!personagem.colisao(Fase.getRetangulosColisao(), personagem.getX() - personagem.getX() + pulo, 0)) {
+				personagem.setX(personagem.getX() + pulo);
 
-			personagem.setX(personagem.getX() + pulo);
+				switch (right) {
+				case 0:
+					personagem.aparencia = 24;
+					break;
+				case 1:
+					personagem.aparencia = 25;
+					break;
+				case 2:
+					personagem.aparencia = 26;
+					break;
+				case 3:
+					personagem.aparencia = 27;
+					break;
+				case 4:
+					personagem.aparencia = 28;
+					break;
+				case 5:
+					personagem.aparencia = 29;
+					break;
+				case 6:
+					personagem.aparencia = 30;
+					break;
+				case 7:
+					personagem.aparencia = 31;
+					break;
+				case 8:
+					personagem.aparencia = 32;
+					break;
+				}
 
-			switch (right) {
-			case 0:
-				personagem.aparencia = 24;
-				break;
-			case 1:
-				personagem.aparencia = 25;
-				break;
-			case 2:
-				personagem.aparencia = 26;
-				break;
-			case 3:
-				personagem.aparencia = 27;
-				break;
-			case 4:
-				personagem.aparencia = 28;
-				break;
-			case 5:
-				personagem.aparencia = 29;
-				break;
-			case 6:
-				personagem.aparencia = 30;
-				break;
-			case 7:
-				personagem.aparencia = 31;
-				break;
-			case 8:
-				personagem.aparencia = 32;
-				break;
+				if (right == 8)
+					right = 0;
+				else
+					right++;
 			}
-			if (right == 8)
-				right = 0;
-			else
-				right++;
 		}
-
 	}
 }

@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 
+import Model.Caveira;
 import Model.Inimigo;
 import Model.Picterodatilo;
 import Model.Sprite;
@@ -22,10 +23,10 @@ public class Controle implements KeyListener, ActionListener, Runnable {
 	private Fase fase;
 	private int add;
 	private Menu menu;
-
 	private Dancar dancar;
 	private Sprite personagem;
 	private Inimigo inimigo;
+	
 
 	public Controle(Janela janela) {
 		this.janela = janela;
@@ -52,19 +53,17 @@ public class Controle implements KeyListener, ActionListener, Runnable {
 		fase.addKeyListener(this);
 		fase.requestFocus();
 		menu.getJogar().addActionListener(this);
+		
 	}
 
-	public void atualizarTela() {
-
-	}
-
-	@Override
+		@Override
 	public void run() {
 		while (true) {
 			try {
-				atualizarTela();
-				Thread.sleep(100);
 				adicionarInimigo();
+				ataqueInimigo();
+				Thread.sleep(100);
+				
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -90,14 +89,29 @@ public class Controle implements KeyListener, ActionListener, Runnable {
 				Triceraptor tri= new Triceraptor("tri.png",9,2,9,800,408);
 				inimigo.getTriceraptores().add(tri);
 				add++;
-			tri.setControle(1);
-				
+		 
+			Caveira caveira= new Caveira("dino_bones.png",0, 2,3, 400, 300);
+			inimigo.getCaveiras().add(caveira);
+			
 			}
 		} catch (IOException e) {
 
 		}
 	}
 
+public void ataqueInimigo() {
+	
+	for (int i = 0; i < inimigo.getTriceraptores().size(); i++) {
+
+		Triceraptor tri = (Triceraptor) inimigo.getTriceraptores().get(i);
+        int variavel = tri.getX() - personagem.getX();
+		if(variavel >0 && variavel <200) { 
+			tri.setMovimento(1);
+			
+		}
+
+	}
+}
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}

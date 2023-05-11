@@ -7,11 +7,13 @@ public class Inimigo {
 
 	private ArrayList<Picterodatilo> picterodatilos;
 	private ArrayList<Triceraptor> triceraptores;
+	private ArrayList<Caveira> caveiras;
 	
 	public Inimigo() {
 		
 		this.picterodatilos = new ArrayList<Picterodatilo>();
 		this.triceraptores = new ArrayList<Triceraptor>();
+		this.caveiras = new ArrayList<Caveira>();
 	}
 	
 
@@ -33,5 +35,9 @@ public class Inimigo {
 		this.triceraptores = triceraptores;
 	}
 
+
+	public ArrayList<Caveira> getCaveiras() {
+		return caveiras;
+	}
 
 }

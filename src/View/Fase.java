@@ -28,14 +28,16 @@ public class Fase extends Jogo {
 
 	@Override
 	public void Load(String img) {
-		fundo = new Mapa("fundojogo.jpg", "fundo.txt");
-		colisao = new Mapa("fundojogo.jpg", "colisao.txt");
+		fundo = new Mapa("fundo.png", "fundo.txt");
+		colisao = new Mapa("fundo.png", "colisao.txt");
+
+	
 		retangulosColisao= colisao.montarColi();
 		fundo.montarMapa();
 
 		inimigo = new Inimigo();
 		try {
-			personagem = new Sprite(img, 0, 4, 12, 50, 413);
+			personagem = new Sprite(img, 0, 4, 12, 50, 416);
 		} catch (IOException e) {
 
 		}

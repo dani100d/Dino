@@ -39,7 +39,6 @@ public class Pulo extends Thread implements KeyListener {
 	}
 
 	public void pular() {
-		System.out.println(personagem.getY());
 
 		for (int i = 0; i < 11; i++) {
 			try {

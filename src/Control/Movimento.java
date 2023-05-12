@@ -65,7 +65,7 @@ public class Movimento extends Thread implements KeyListener {
 	public void mover() {
 
 		if (keyPool.get(KeyEvent.VK_RIGHT) != null) {
-			if (!personagem.colisao(Fase.getRetangulosColisao(), personagem.getX() - personagem.getX() + pulo, 0)) {
+
 				personagem.setX(personagem.getX() + pulo);
 
 				switch (right) {
@@ -105,4 +105,4 @@ public class Movimento extends Thread implements KeyListener {
 			}
 		}
 	}
-}
+

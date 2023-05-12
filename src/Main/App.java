@@ -1,10 +1,7 @@
 package Main;
 
-import javax.swing.JFrame;
-
 import Control.Controle;
 import View.Janela;
-import View.TelaInicial;
 
 public class App{
 

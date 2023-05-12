@@ -46,7 +46,7 @@ public class Sprite extends Thread {
 		Rectangle personagem = new Rectangle(getX() + x, getY() + y, getLargura(), getAltura());
 		for (Rectangle rectangle : tmp) {
 			if (rectangle.intersects(personagem)) {
-				System.out.println("foi");
+				System.out.println("colidiu");
 				return true;
 			}
 		}
@@ -55,15 +55,15 @@ public class Sprite extends Thread {
 	}
 
 	public void setX(int posX) {
-		 if (!colisao(Fase.getRetangulosColisao(), posX - this.x, 0)) {
+		// if (!colisao(Fase.getRetangulosColisao(), posX - this.x, 0)) {
 		this.x = posX;
-		 }
+		// }
 	}
 
 	public void setY(int posY) {
-		 if (!colisao(Fase.getRetangulosColisao(), 0, posY - this.y)) {
+		// if (!colisao(Fase.getRetangulosColisao(), 0, posY - this.y)) {
 		this.y = posY;
-		}
+		//}
 	}
 
 	public int getX() {

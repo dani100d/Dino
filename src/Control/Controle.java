@@ -105,7 +105,7 @@ public void ataqueInimigo() {
 
 		Triceraptor tri = (Triceraptor) inimigo.getTriceraptores().get(i);
         int variavel = tri.getX() - personagem.getX();
-		if(variavel >0 && variavel <200) { 
+		if(variavel >0 && variavel <400) { 
 			tri.setMovimento(1);
 			
 		}

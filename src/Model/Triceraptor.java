@@ -101,7 +101,7 @@ public class Triceraptor extends Thread {
 
 		for(int i=0;i<80;i++) {
 			try {
-				sleep(100);
+				sleep(20);
 
 				this.setX(this.getX() - pulo);
 				switch (left) {
